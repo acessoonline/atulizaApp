@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atualizar Aplicativo</title>
+<title>Atualizar App</title>
 <style>
     body {
         display: flex;
@@ -11,7 +11,7 @@
         align-items: center;
         height: 100vh;
         font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
+        background-color: #f9f9f9;
         margin: 0;
     }
     .container {
@@ -21,95 +21,88 @@
         border-radius: 12px;
         background-color: #fff;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        max-width: 460px;
+        max-width: 450px;
     }
     h2 {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         font-size: 22px;
         color: #222;
     }
-    p {
-        font-size: 15px;
-        line-height: 1.6;
-        color: #444;
-        margin-bottom: 20px;
-    }
-    ul {
-        text-align: left;
-        margin: 15px 0;
-        padding-left: 20px;
-        color: #333;
+    p#mensagem {
         font-size: 14px;
-    }
-    .aviso {
-        background-color: #fff3cd;
-        border: 1px solid #ffeeba;
-        color: #856404;
-        padding: 15px;
-        border-radius: 8px;
+        line-height: 1.5;
         margin-bottom: 20px;
-        text-align: left;
-        font-size: 14px;
+        color: #555;
+        text-align: justify;
     }
-    a button, .btn {
-        background-color: #2563eb;
-        color: #fff;
+    button {
+        margin: 10px;
         padding: 12px 25px;
         font-size: 16px;
         border: none;
         border-radius: 8px;
         cursor: pointer;
         transition: background-color 0.2s;
-        margin: 8px;
     }
-    a button:hover, .btn:hover {
-        background-color: #1e40af;
-    }
-    #sair {
+    button#sair {
         background-color: #ef4444;
+        color: #fff;
     }
-    #sair:hover {
-        background-color: #dc2626;
+    button#sair:hover {
+        background-color: #f87171;
+    }
+    button#atualizar {
+        background-color: #3b82f6;
+        color: #fff;
+    }
+    button#atualizar:hover {
+        background-color: #2563eb;
+    }
+    #resultado {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #333;
     }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🚀 Nova versão disponível!</h2>
-
-    <p>
-        Uma versão mais recente do aplicativo já está no ar!  
-        Atualize agora mesmo e aproveite todas as novidades que preparamos especialmente para você:
+    <h2>Atualizar Aplicativo</h2>
+    <p id="mensagem">
+        Clique em "Atualizar" para baixar a versão mais recente do aplicativo com todas as novidades e melhorias. Se não houver atualização disponível, você verá a mensagem que já está com a versão mais recente.
     </p>
 
-    <ul>
-        <li>✨ Novos recursos e funcionalidades exclusivas</li>
-        <li>⚡ Melhor desempenho e mais velocidade</li>
-        <li>🔒 Correções de segurança importantes</li>
-        <li>🐞 Ajustes de bugs que você nos ajudou a encontrar</li>
-    </ul>
-
-    <div class="aviso">
-        ⚠️ <strong>Aviso:</strong> Como o download é feito fora da Google Play, 
-        o Android pode mostrar que o arquivo <em>pode ser prejudicial</em>.  
-        Esse aviso é padrão, mas fique tranquilo: <strong>o app é seguro e assinado digitalmente</strong>.  
-    </div>
-
-    <p>
-        Clique no botão abaixo e garanta a versão mais atualizada do nosso aplicativo:
-    </p>
-
-    <!-- Substitui pelo link do teu APK no Google Drive -->
-    <a href="https://github.com/acessoonline/atulizaApp/releases/download/v1.0/aplicativo-release.apk
-" target="_blank">
-        <button>📥 Baixar Atualização</button>
-    </a>
-
-    <!-- Botão Sair -->
-    <button id="sair" class="btn" onclick="window.location.href='index.html'">Sair</button>
+    <button id="atualizar" onclick="baixarAPK()">📥 Atualizar</button>
+    <button id="sair" onclick="window.location.href='index.html'">❌ Sair</button>
+    <p id="resultado"></p>
 </div>
+
+<script>
+const versaoAtual = "1.0.2"; // versão atual do app instalada
+const urlVersao = "https://github.com/acessoonline/atulizaApp/raw/main/versao.txt"; // arquivo txt no GitHub com a versão mais recente
+const linkAPK = "https://github.com/acessoonline/atulizaApp/raw/main/aplicativo-release.apk"; // link direto para APK
+
+function baixarAPK() {
+    fetch(urlVersao)
+        .then(response => response.text())
+        .then(versaoNova => {
+            versaoNova = versaoNova.trim();
+            if (versaoNova > versaoAtual) {
+                document.getElementById("resultado").innerText = "🚀 Baixando a nova versão...";
+                window.location.href = linkAPK;
+            } else {
+                document.getElementById("resultado").innerText = "✅ Você já está usando a versão mais recente do aplicativo.";
+            }
+        })
+        .catch(() => {
+            document.getElementById("resultado").innerText = "⚠️ Erro ao verificar atualização.";
+        });
+}
+</script>
 
 </body>
 </html>
+
+
 
