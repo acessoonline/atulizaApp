@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atualizar App</title>
+<title>Atualizar Aplicativo</title>
 <style>
     body {
         display: flex;
@@ -21,7 +21,7 @@
         border-radius: 12px;
         background-color: #fff;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        max-width: 450px;
+        max-width: 500px;
     }
     h2 {
         margin-bottom: 20px;
@@ -70,7 +70,7 @@
 <div class="container">
     <h2>Atualizar Aplicativo</h2>
     <p id="mensagem">
-        Clique em "Atualizar" para baixar a versão mais recente do aplicativo com todas as novidades e melhorias. Se não houver atualização disponível, você verá a mensagem que já está com a versão mais recente.
+        Clique em "Atualizar" para baixar a versão mais recente do aplicativo, aproveitando as novidades, correções de bugs e melhorias de desempenho. Se não houver uma nova versão, você verá uma mensagem informando que já está com a versão mais recente.
     </p>
 
     <button id="atualizar" onclick="baixarAPK()">📥 Atualizar</button>
@@ -80,7 +80,7 @@
 
 <script>
 const versaoAtual = "1.0.2"; // versão atual do app instalada
-const urlVersao = "https://github.com/acessoonline/atulizaApp/raw/main/versao.txt"; // arquivo txt no GitHub com a versão mais recente
+const urlVersao = "https://raw.githubusercontent.com/acessoonline/atulizaApp/main/versao.txt"; // arquivo txt no GitHub com a versão mais recente
 const linkAPK = "https://github.com/acessoonline/atulizaApp/raw/main/aplicativo-release.apk"; // link direto para APK
 
 function baixarAPK() {
@@ -103,6 +103,3 @@ function baixarAPK() {
 
 </body>
 </html>
-
-
-
